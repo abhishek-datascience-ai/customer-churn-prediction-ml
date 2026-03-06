@@ -7,21 +7,19 @@ This project builds an end-to-end machine learning system that predicts which cu
 
 The project demonstrates the full data science lifecycle, including data preprocessing, machine learning modeling, model evaluation, and production deployment via a REST API.
 
-Business Problem
+#### Business Problem
 
 Telecommunication companies face high customer acquisition costs. Retaining existing customers is significantly cheaper than acquiring new ones.
 
 The objective of this project is to:
 
-Identify customers likely to churn
-
-Enable targeted retention campaigns
-
-Reduce revenue loss
+1. Identify customers likely to churn
+2. Enable targeted retention campaigns
+3. Reduce revenue loss
 
 By predicting churn early, companies can prioritize high-risk customers and improve customer lifetime value.
 
-Dataset
+#### Dataset
 
 This project uses the Telco Customer Churn dataset, which contains customer demographics, subscription services, and billing information.
 
@@ -39,33 +37,25 @@ Dataset summary:
 
 Data includes:
 
-Customer demographics
+1. Customer demographics
+2. Internet and phone services
+3. Billing information
+4. Contract details
+5. Payment methods
 
-Internet and phone services
-
-Billing information
-
-Contract details
-
-Payment methods
-
-Data Preparation
+#### Data Preparation
 
 Data preprocessing steps include:
 
-Removal of non-informative identifiers (customerID)
-
-Conversion of TotalCharges to numeric values
-
-Handling missing values
-
-One-hot encoding of categorical variables
-
-Building a reusable preprocessing pipeline
+1. Removal of non-informative identifiers (customerID)
+2. Conversion of TotalCharges to numeric values
+3. Handling missing values
+4. One-hot encoding of categorical variables
+5. Building a reusable preprocessing pipeline
 
 The preprocessing pipeline ensures consistent transformations during both training and inference.
 
-Machine Learning Models
+#### Machine Learning Models
 
 Multiple models were evaluated:
 
@@ -82,7 +72,7 @@ class_weight="balanced"
 
 This improves the model’s ability to detect churn cases.
 
-Model Performance
+#### Model Performance
 
 Final evaluation metrics:
 | Metric                   | Score |
@@ -93,31 +83,26 @@ Final evaluation metrics:
 
 Interpretation:
 
-The model successfully identifies approximately 79% of customers who are likely to churn, enabling businesses to prioritize retention efforts effectively.
+The model successfully identifies **approximately 79% of customers who are likely to churn**, enabling businesses to prioritize retention efforts effectively.
 
-The ROC-AUC score of 0.84 indicates strong predictive performance.
+The ROC-AUC score of **0.84** indicates strong predictive performance.
 
-Key Drivers of Customer Churn
+#### Key Drivers of Customer Churn
 
 Feature importance analysis identified several major churn factors:
 
-Customer tenure
-
-Monthly charges
-
-Total charges
-
-Contract type
-
-Internet service type
-
-Payment method
+1. Customer tenure
+2. Monthly charges
+3. Total charges
+4. Contract type
+5. Internet service type
+6. Payment method
 
 Business insight:
 
-Customers with short tenure and higher monthly charges are significantly more likely to churn.
+Customers with **short tenure and higher monthly charges** are significantly more likely to churn.
 
-Production Deployment
+#### Production Deployment
 
 ## API Demo
 
@@ -148,7 +133,7 @@ Access the API documentation:
 
 http://127.0.0.1:8000/docs
 
-System Architecture
+#### System Architecture
 
 ```mermaid
 flowchart LR
@@ -172,57 +157,43 @@ H --> J[Customer Success Dashboard]
 H --> K[Marketing Automation]
 ```
 
-Technology Stack
+#### Technology Stack
 
-Python
+1. Python
+2. Pandas
+3. NumPy
+4. Scikit-learn
+5. FastAPI
+6. Uvicorn
+7. Matplotlib
+8. Seaborn
 
-Pandas
-
-NumPy
-
-Scikit-learn
-
-FastAPI
-
-Uvicorn
-
-Matplotlib
-
-Seaborn
-
-Future Improvements
+#### Future Improvements
 
 Potential enhancements include:
 
-Gradient boosting models (XGBoost / LightGBM)
+1. Gradient boosting models (XGBoost / LightGBM)
+2. Hyperparameter tuning with Optuna
+3. Real-time churn monitoring dashboard
+4. Integration with CRM systems
 
-Hyperparameter tuning with Optuna
+#### Author
 
-Real-time churn monitoring dashboard
-
-Integration with CRM systems
-
-Author
-
-Abhishek
+**Abhishek**
 
 Software Engineer exploring Machine Learning, AI, and Data Science.
-
 Building practical ML systems and production-ready APIs.
 
-Why This Project Matters
+#### Why This Project Matters
 
 Many machine learning portfolios stop at model training.
 
 This project demonstrates a complete ML system, including:
 
-Data preprocessing pipeline
-
-Model evaluation with ROC-AUC
-
-Handling class imbalance
-
-Deployment via REST API
-
+1. Data preprocessing pipeline
+2. Model evaluation with ROC-AUC
+3. Handling class imbalance
+4. Deployment via REST API
 
 This mirrors how machine learning solutions are built in real-world production environments.
+
