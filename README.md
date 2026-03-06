@@ -92,6 +92,16 @@ This improves the model’s ability to detect churn cases.
 
 #### Model Performance
 
+## Model Performance Visualization
+
+### Confusion Matrix
+
+![Confusion Matrix](assets/confusion-matrix.png)
+
+### ROC Curve
+
+![ROC Curve](assets/roc-curve.png)
+
 Final evaluation metrics:
 | Metric                   | Score |
 | ------------------------ | ----- |
