@@ -5,6 +5,18 @@
 ![API](https://img.shields.io/badge/API-FastAPI-green)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
+## Project Preview
+
+This project builds a production-ready machine learning system that predicts customer churn for a telecom company.
+
+Key capabilities:
+
+- Customer churn prediction using machine learning
+- Class imbalance handling for realistic datasets
+- End-to-end ML pipeline
+- FastAPI REST API deployment
+- Interactive Swagger documentation
+
 #### Project Overview
 
 Customer churn is a critical problem for subscription-based businesses such as telecom providers. When customers cancel their services, companies lose recurring revenue and must spend more on acquiring new users.
@@ -203,3 +215,4 @@ This project demonstrates a complete ML system, including:
 
 
 This mirrors how machine learning solutions are built in real-world production environments.
+
