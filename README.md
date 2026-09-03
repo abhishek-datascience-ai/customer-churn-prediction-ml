@@ -1,228 +1,132 @@
-﻿### ﻿Customer Churn Prediction using Machine Learning
+# Customer Churn Prediction Using Machine Learning
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange)
-![API](https://img.shields.io/badge/API-FastAPI-green)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange)
+![FastAPI](https://img.shields.io/badge/FastAPI-REST%20API-009688)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-## Project Preview
+An end-to-end machine-learning project that predicts telecom customer churn. It includes data preparation, a reusable scikit-learn pipeline, model evaluation, and a locally runnable FastAPI prediction API.
 
-This project builds a production-ready machine learning system that predicts customer churn for a telecom company.
+## Key Features
 
-Key capabilities:
+- Balanced logistic regression for churn classification
+- Automated preprocessing for numeric and categorical data
+- Reusable training and evaluation scripts
+- Saved pipeline for consistent training and inference
+- FastAPI endpoints with interactive Swagger documentation
 
-- Customer churn prediction using machine learning
-- Class imbalance handling for realistic datasets
-- End-to-end ML pipeline
-- FastAPI REST API deployment
-- Interactive Swagger documentation
+## Model Performance
 
-#### Project Overview
+The model was evaluated on a stratified 20% holdout set containing 1,409 customer records.
 
-Customer churn is a critical problem for subscription-based businesses such as telecom providers. When customers cancel their services, companies lose recurring revenue and must spend more on acquiring new users.
-
-This project builds an end-to-end machine learning system that predicts which customers are likely to churn, enabling companies to proactively intervene with retention strategies.
-
-The project demonstrates the full data science lifecycle, including data preprocessing, machine learning modeling, model evaluation, and production deployment via a REST API.
-
-#### Business Problem
-
-Telecommunication companies face high customer acquisition costs. Retaining existing customers is significantly cheaper than acquiring new ones.
-
-The objective of this project is to:
-
-1. Identify customers likely to churn
-2. Enable targeted retention campaigns
-3. Reduce revenue loss
-
-By predicting churn early, companies can prioritize high-risk customers and improve customer lifetime value.
-
-#### Dataset
-
-This project uses the Telco Customer Churn dataset, which contains customer demographics, subscription services, and billing information.
-
-Dataset source:
-Kaggle
-
-Dataset summary:
-
-| Metric             | Value |
-| ------------------ | ----- |
-| Total customers    | 7043  |
-| Original features  | 21    |
-| Processed features | 30+   |
-| Target variable    | Churn |
-
-Data includes:
-
-1. Customer demographics
-2. Internet and phone services
-3. Billing information
-4. Contract details
-5. Payment methods
-
-#### Data Preparation
-
-Data preprocessing steps include:
-
-1. Removal of non-informative identifiers (customerID)
-2. Conversion of TotalCharges to numeric values
-3. Handling missing values
-4. One-hot encoding of categorical variables
-5. Building a reusable preprocessing pipeline
-
-The preprocessing pipeline ensures consistent transformations during both training and inference.
-
-#### Machine Learning Models
-
-Multiple models were evaluated:
-
-| Model                        | Purpose               |
-| ---------------------------- | --------------------- |
-| Logistic Regression          | Baseline model        |
-| Random Forest                | Non-linear comparison |
-| Balanced Logistic Regression | Final model           |
-
-
-Class imbalance was addressed using:
-
-class_weight="balanced"
-
-This improves the model’s ability to detect churn cases.
-
-#### Model Performance
-
-## Model Performance Visualization
-
-### Confusion Matrix
+| Metric | Score |
+| --- | ---: |
+| Accuracy | 0.74 |
+| Churn recall | 0.79 |
+| ROC-AUC | 0.84 |
 
 ![Confusion Matrix](assets/confusion-matrix.png)
 
-### ROC Curve
-
 ![ROC Curve](assets/roc-curve.png)
 
-Final evaluation metrics:
-| Metric                   | Score |
-| ------------------------ | ----- |
-| Accuracy                 | 0.74  |
-| Recall (Churn Detection) | 0.79  |
-| ROC-AUC Score            | 0.84  |
+## Technology Stack
 
-Interpretation:
+| Technology | Purpose |
+| --- | --- |
+| Python 3.12 | Application language |
+| Pandas | Data loading and preparation |
+| scikit-learn | Preprocessing, model training, and evaluation |
+| Joblib | Model persistence |
+| FastAPI and Pydantic | Prediction API and request validation |
+| Uvicorn | Local ASGI server |
+| Matplotlib | Evaluation visualizations |
 
-The model successfully identifies **approximately 79% of customers who are likely to churn**, enabling businesses to prioritize retention efforts effectively.
+## Project Structure
 
-The ROC-AUC score of **0.84** indicates strong predictive performance.
+```text
+customer-churn-prediction-ml/
+├── api/
+│   └── app.py
+├── assets/
+│   ├── api-demo.png
+│   ├── confusion-matrix.png
+│   └── roc-curve.png
+├── models/
+│   └── churn_pipeline.joblib
+├── src/
+│   ├── evaluate_pipeline.py
+│   └── train_pipeline.py
+└── requirements.txt
+```
 
-#### Key Drivers of Customer Churn
+## Setup
 
-Feature importance analysis identified several major churn factors:
+Clone the repository and create a virtual environment:
 
-1. Customer tenure
-2. Monthly charges
-3. Total charges
-4. Contract type
-5. Internet service type
-6. Payment method
+```bash
+git clone https://github.com/abhishek-datascience-ai/customer-churn-prediction-ml.git
+cd customer-churn-prediction-ml
+python -m venv .venv
+```
 
-Business insight:
+Activate it on Windows PowerShell:
 
-Customers with **short tenure and higher monthly charges** are significantly more likely to churn.
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
 
-#### Production Deployment
+On macOS or Linux:
 
-## API Demo
+```bash
+source .venv/bin/activate
+```
 
-The churn prediction model is deployed as a REST API using FastAPI.
+Then install the dependencies:
 
-Below is the interactive Swagger interface for testing predictions.
+```bash
+python -m pip install -r requirements.txt
+```
 
-![FastAPI Demo](assets/api-demo.png)
+Download the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) and place the CSV at:
 
-The machine learning pipeline is deployed using FastAPI as a REST API.
+```text
+data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
+```
 
-The API allows real-time predictions for new customers.
+## Usage
+
+Train and save the pipeline:
+
+```bash
+python -m src.train_pipeline
+```
+
+Evaluate the saved pipeline:
+
+```bash
+python -m src.evaluate_pipeline
+```
+
+Start the API from the repository root:
+
+```bash
+python -m uvicorn api.app:app --reload
+```
+
+Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to test the API through Swagger UI.
+
+| Endpoint | Method | Purpose |
+| --- | --- | --- |
+| `/health` | `GET` | Check API availability |
+| `/predict` | `POST` | Generate a churn probability and prediction |
 
 Example response:
 
+```json
 {
   "churn_probability": 0.82,
   "churn_prediction": 1
 }
-
-Interactive API documentation is automatically generated via Swagger UI.
-
-To run the API locally:
-
-uvicorn api.app:app --reload
-
-Access the API documentation:
-
-http://127.0.0.1:8000/docs
-
-#### System Architecture
-
-```mermaid
-flowchart LR
-
-A[Customer Data Input] --> B[FastAPI REST API]
-
-B --> C[Preprocessing Pipeline]
-
-C --> D[Feature Engineering]
-
-D --> E[Machine Learning Model<br>Balanced Logistic Regression]
-
-E --> F[Churn Probability Score]
-
-F --> G[Prediction Response API]
-
-G --> H[Business Applications]
-
-H --> I[Retention Campaigns]
-H --> J[Customer Success Dashboard]
-H --> K[Marketing Automation]
 ```
 
-#### Technology Stack
-
-1. Python
-2. Pandas
-3. NumPy
-4. Scikit-learn
-5. FastAPI
-6. Uvicorn
-7. Matplotlib
-8. Seaborn
-
-#### Future Improvements
-
-Potential enhancements include:
-
-1. Gradient boosting models (XGBoost / LightGBM)
-2. Hyperparameter tuning with Optuna
-3. Real-time churn monitoring dashboard
-4. Integration with CRM systems
-
-#### Author
-
-**Abhishek**
-
-Software Engineer exploring Machine Learning, AI, and Data Science.
-Building practical ML systems and production-ready APIs.
-
-#### Why This Project Matters
-
-Many machine learning portfolios stop at model training.
-
-This project demonstrates a complete ML system, including:
-
-1. Data preprocessing pipeline
-2. Model evaluation with ROC-AUC
-3. Handling class imbalance
-4. Deployment via REST API
-
-
-This mirrors how machine learning solutions are built in real-world production environments.
-
+![FastAPI Swagger UI](assets/api-demo.png)
